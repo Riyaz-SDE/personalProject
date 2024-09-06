@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom"
-import Login from "./Login"
-import Profile from "./Profile"
-import Users from "./Users"
-import { OthersProfile } from "./OthersProfile"
+import Login from "./login/Login"
+import Profile from "./profile/Profile"
+import Users from "./users/Users"
+import { OthersProfile } from "./othersProfile/OthersProfile"
+import ProfileCard from "./components/ProfileCard"
 
 
 const Indexpage =()=>{
@@ -14,6 +15,7 @@ const Indexpage =()=>{
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/users" element={<Users/>}/>
             <Route path="/users/:id" element={<OthersProfile/>}/>
+            <Route path="/c" element={<ProfileCard/>}/>
         </Routes>
         </>
     )

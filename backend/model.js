@@ -1,8 +1,14 @@
 const mongoose = require('mongoose')
 
 const profilePath= new mongoose.Schema({
-    path: String,
-    fileName:String
+    fileName: {
+        type : String,
+        default : 'DEFAULT.webp'
+    },
+    path:{
+        type : String,
+        default : ''
+    },
 })
 const userSchema = new mongoose.Schema({
     name:{

@@ -6,14 +6,17 @@ const ProfileCard = ()=>{
         <>
         <div className="profile-wrapper">
             <div className="cover">
-                <img src={img} alt="" />
+                <img src={'./vite.svg'} alt="" />
             </div>
-            <div className="profile"><img src={img} alt="" /></div>/
-            <div className="userName"><h1>RIyaz</h1><p>@NeetCode
-‧
-664K subscribers
-‧
-354 videos</p></div>
+            <div className="profile"><img src={'./vite.svg'} alt="" /></div>/
+            <div className="userName">
+                <h1>RIyaz</h1>
+                <p>@NeetCode
+                ‧
+                664K subscribers
+                ‧
+                354 videos</p>
+            </div>
             {/* <div className="others"></div> */}
         </div>
         </>

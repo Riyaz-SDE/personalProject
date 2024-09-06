@@ -10,28 +10,49 @@ app.use(express.json())
 const User = require('./model')
 
 
-app.use('/',require('./Routes/get'))
+app.use('/',require('./Routes/get')) // for demo purpose
 // ====================================
 // app.use('/auth',require('./Routes/auth'))
 // =====================================
 
-// creating user and stores hashed password in mongodb
-app.use('/post',require('./Routes/createUser'))
+/**
+ * creates user and stores hashed password in mongodb
+ */
+app.use('/post',require('./Routes/createUser')) // for user registration
 
-// ===============================================================creating user
+/**
+ * for user login and generate JWT token 
+ */
+app.use('/log',require('./Routes/login')) // for user login
 
-app.use('/log',require('./Routes/login'))
+/**
+ * @protected
+ * token give a user information object from DB
+ * and also has /protected/uploads/DEFAULT.webp
+ */
+app.use('/protected',require('./Routes/protected')) // routed protected by JWT 
 
-// ================================================================
-
-app.use('/protected',require('./Routes/protected'))
-
-// ========================file upload
+/**
+ * file upload using multer
+ */
 app.use('/log/pic',require('./Routes/upload'))
 
+/**
+ * @motive - its a search api
+ * temporaly it will only list all exisiting user
+ */
 app.use('/users',require('./Routes/userList'))
+
+/**
+ * not used yet
+ */
 app.use('/search',require('./Routes/searchUser'))
+
+/**
+ * this will get user details by their unique Id in DB
+ */
 app.use('/getUsers',require('./Routes/getUsers'))
+
 app.listen('5000',(req,res)=>{
     console.log('server is running');
 })
