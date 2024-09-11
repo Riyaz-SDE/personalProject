@@ -2,7 +2,7 @@
 const multer = require('multer');
 const path = require('path');
 const jwt = require('jsonwebtoken');
-const User = require('../model')
+const User = require('../model/model')
 
 function authMiddleware(req, res, next) {
    

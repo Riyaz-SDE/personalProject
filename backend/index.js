@@ -7,7 +7,7 @@ const connect = require('./dbconnect')
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
-const User = require('./model')
+const User = require('./model/model')
 
 
 app.use('/',require('./Routes/get')) // for demo purpose
@@ -52,6 +52,15 @@ app.use('/search',require('./Routes/searchUser'))
  * this will get user details by their unique Id in DB
  */
 app.use('/getUsers',require('./Routes/getUsers'))
+
+/**
+ * follow request api
+ */
+app.use('/follow',require('./Routes/connection/follow'))
+/**
+ * get followers api
+ */
+app.use('/',require('./Routes/connection/getOwnFollowers'))
 
 app.listen('5000',(req,res)=>{
     console.log('server is running');

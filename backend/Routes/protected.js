@@ -2,7 +2,7 @@ const express = require('express')
 const app = express.Router()
 const jwt = require('jsonwebtoken')
 const path = require('path')
-const User = require('../model')
+const User = require('../model/model')
 
 app.use('/uploads',express.static(path.join(path.dirname(__dirname),'uploads')))
 

@@ -4,7 +4,7 @@ const router = express.Router();
 // const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const path = require('path');
-const User = require('../model')
+const User = require('../model/model')
 // uploads
 router.post('/',require('../middleware/upload').authMiddleware,require('../middleware/upload').uploads.single("ProfilePic"),async(req,res)=>{
     try{

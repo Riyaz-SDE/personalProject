@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Users = require('../model')
+const Users = require('../model/model')
 router.get('/',async(req,res)=>{
     try {
         const search = req.query.search || 0

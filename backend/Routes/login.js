@@ -2,7 +2,7 @@ const express =require('express')
 const route = express.Router()
 const bcryt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const User = require('../model')
+const User = require('../model/model')
 
 route.post('/',async(req,res)=>{
     try{

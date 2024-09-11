@@ -3,7 +3,7 @@ const bcryt = require('bcrypt')
 const path = require('path')
 const routes = express.Router()
 const fs = require('fs')
-const User = require('../model')
+const User = require('../model/model')
 
 // routes.use(express.urlencoded({extended:false}))
 // routes.use(express.json())
