@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import Img from "../Img";
+import useFollow from "./useFollow";
 
 export const OthersProfile = () =>{
     const {id} = useParams()
     const [data,setData] = useState({})
+    const [follow] = useFollow(localStorage.getItem("userId"),id)
     useEffect(()=>{
         const fetch = async ()=>{
             try{
@@ -21,11 +23,24 @@ export const OthersProfile = () =>{
         return ()=> fetch
     },[id])
    
-   if(data.name){return(
+   if(data.username){return(
         <>
         {/* <div>{JSON.stringify(data)}</div>    */}
-        <img src={`http://127.0.0.1:5000/protected/uploads/${data.profile.path?data.name+'/'+data.profile.fileName:'DEFAULT.webp'}`}/>
-        {data.name}
+        <img src={`http://127.0.0.1:5000/protected/uploads/${data.profile.path?data.username+'/'+data.profile.fileName:'DEFAULT.webp'}`}
+        style={{width:'100px',aspectRatio:'1/1',borderRadius:'50%'}}/>
+        <h1>Name : {data.username} </h1>
+        <table>
+            <tr>
+                <th>followers</th>
+                <th>following</th>
+            </tr>
+            <tr>
+                <td>{data.followers.length}</td>
+                <td>{data.followings.length}</td>
+            </tr>
+        </table>
+        <button onClick={follow}>
+            {data.followings.filter(e => e.userId === localStorage.getItem("userId")) ? 'un':''} Follow</button>
         </>
     )}return <>null</>
 }

@@ -24,7 +24,9 @@ router.post('/', async (req, res) => {
     }
 
     // Create a new follow relationship
-    await Follow.create({ follower: followerId, followed: followedId });
+    await Follow.updateOne(
+      {userId:followerId},
+      {$push : { followed: followedId }});
 
     res.status(200).json({ message: 'User followed successfully' });
   } catch (error) {

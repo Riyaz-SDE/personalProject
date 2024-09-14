@@ -1,16 +1,14 @@
 const mongoose = require('mongoose')
-
+const userRel = new mongoose.Schema({
+    type : mongoose.Schema.Types.ObjectId,
+})
 const followSchema = new mongoose.Schema({
-    followers : {
+    user : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'User',
         require : true
     },
-    followed : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User',
-        require : true
-    },
+    followers : [userRel],
+    followed : [userRel],
     createdAt : {
         type : Date ,
         default : Date.now
@@ -18,9 +16,11 @@ const followSchema = new mongoose.Schema({
 })
 
 // Create a unique index to prevent duplicate follower-followed pairs
-followSchema.index({ follower: 1, followed: 1 }, { unique: true });
+// followSchema.index({  user : 1 });
+// followSchema.index({  followers: 1 });
+// followSchema.index({ followed: 1 });
 
 // Create the Follow model from the schema
-const Follow = mongoose.model('Follow', followSchema);
+const Follow = mongoose.model('Follows', followSchema);
 
 module.exports = Follow;

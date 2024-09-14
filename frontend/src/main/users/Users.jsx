@@ -8,7 +8,6 @@ const Users = () =>{
     const[list,setList]=useState([])
     console.log(pageNum);
     useEffect(()=>{
-        // setList(list=>list=[{name:'riyaz'},{name:'riyaz'},{name:'riyaz'},{name:'riyaz'}])
         const fetch = async ()=>{
             try{
                 let list = await axios.get(`http://127.0.0.1:5000/users`)
@@ -30,19 +29,7 @@ const Users = () =>{
         console.log(err);
        }
     }
-    // async function next(){
-    //     setPage(prv=>prv=prv+1)
-    //     let data = await axios.get(`http://127.0.0.1:5000/users?search=${pageNum}`)
-    //     console.log(data.data);
-    //     setList(data.data)
-    // }
-    // async function prv(){
-    //     setPage(prv=>prv=prv-1)
-    //     if(pageNum<0) return console.log('notvalid');
-    //     let data = await axios.get(`http://127.0.0.1:5000/users?search=${pageNum}`)
-    //     console.log(data.data);
-    //     setList(data.data)
-    // }
+    
     const navigate = (e)=>{
         console.log(list);
         nav(`/users/${e}`,{replace:true})
@@ -53,8 +40,8 @@ const Users = () =>{
             return(
                 <div key={i} onClick={()=>navigate(e._id)} style={{backgroundColor:'#ddd',display:'flex',gap:'10px',alignItems:'center'}}>
                     <img style={{width:'100px',aspectRatio:'1/1',borderRadius:'50%'}} 
-                    src={`http://127.0.0.1:5000/protected/uploads/${e.profile.path ? e.name + '/' + e.profile.fileName:e.profile.fileName}`} alt="" />
-                    <Link to={`/users/${e._id}`}>{e.name}</Link>
+                    src={`http://127.0.0.1:5000/protected/uploads/${e.profile.path  ? e.username + '/' + e.profile.fileName:e.profile.fileName}`} alt="" />
+                    <Link to={`/users/${e._id}`}>{e.username}</Link>
                 </div>
             )
         }):'false'}

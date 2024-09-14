@@ -90,7 +90,9 @@
                 localStorage.clear()
                 navigate('/')
     }
-    console.log('state',data,data.name,(data.profile?.path.split(data.name).pop().slice(1)));
+        localStorage.setItem("userId",data._id)
+    
+    console.log('state',data,data.username,(data.profile?.path.split(data.username).pop().slice(1)));
     if(Object.keys(data).length){
         return(
             <>
@@ -98,12 +100,21 @@
                 <Suspense fallback={<>''''''''''''</>} >
                     <Imgs src={`http://127.0.0.1:5000/protected/uploads/${
                     Object.keys(data).length && data.profile.path ? 
-                    data.name +'/'+(data.profile.fileName)
-                    :'DEFAULT.webp'}`}/>
+                    data.username +'/'+(data.profile.fileName)
+                    :'DEFAULT.webp'}`} sty/>
                 </Suspense>
 
-                <h1>{data.name}</h1>
-                
+                <h1>{data.username}</h1>
+                <table>
+                    <tr>
+                        <th>followers</th>
+                        <th>following</th>
+                    </tr>
+                    <tr>
+                        <td>{data.followers.length}</td>
+                        <td>{data.followings.length}</td>
+                    </tr>
+                </table>
                 <button onClick={hlogout}>Logout {x}</button>
                 <input type="file" name="" id="" ref={fref} />
 

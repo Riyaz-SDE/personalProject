@@ -10,9 +10,18 @@ const profilePath= new mongoose.Schema({
         default : ''
     },
 })
-
+const follow = new mongoose.Schema({
+    userId: {
+        type: mongoose.Types.ObjectId,
+        require:true,
+    },
+    createdAt: {
+        type: Date,
+        dafault : new Date()
+    },
+})
 const userSchema = new mongoose.Schema({
-    name:{
+    username:{
         type: String,
         require:true
     },
@@ -25,8 +34,14 @@ const userSchema = new mongoose.Schema({
         require:true
     },
     profile: profilePath,
-    followers : [],
-    folloing : []
+    followers : {
+        type:[follow],
+        default:[]
+    },
+    followings :{
+        type:[follow],
+        default:[]
+    },
 })
 
 const User = mongoose.model('User',userSchema)
