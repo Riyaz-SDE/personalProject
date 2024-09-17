@@ -5,9 +5,9 @@ const path = require('path')
 const User = require('../../model/model')
 const authentication = require('../../middleware/authentication')
 
-app.use('/uploads',express.static(path.join(path.dirname(path.dirname(__dirname)),'uploads')),()=>{
-    console.log(path.join(path.dirname(path.dirname(__dirname)),'uploads'));
-})
+// app.use('/uploads',express.static(path.join(path.dirname(path.dirname(__dirname)),'uploads')),()=>{
+//     console.log(path.join(path.dirname(path.dirname(__dirname)),'uploads'));
+// })
 app.use('/',authentication)
 app.get('/', async(req,res)=>{
     console.log('pop');

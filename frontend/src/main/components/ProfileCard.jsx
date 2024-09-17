@@ -1,5 +1,5 @@
 import React from "react"
-import '../css/profilecard.css'
+import './css/profilecard.css'
 // import img from '../css/intricity.jpg'
 const ProfileCard = ()=>{
     return(

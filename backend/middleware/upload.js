@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/model')
 
 function authMiddleware(req, res, next) {
-   
+    console.log('authmidleware executed')
     const token = req.headers.authorization.split(" ")[1]
     const verify = jwt.verify(token,"q1q1q1",async(err,decode)=>{
         if(err) return
@@ -26,9 +26,11 @@ const storage = multer.diskStorage({
     destination:(req,file,cb)=>{
         // const name = req.body.object
         // const pathname = path.join(__dirname,'uploads',file.object)
-        console.log(req.customData.token.name);
-        const pathname = path.join(path.dirname(__dirname),'uploads',req.customData.token.name)
-        console.log(pathname);
+        console.log('folder destination creating')
+        console.log(req.customData)
+        console.log(req.customData.token.usernname);
+        const pathname = path.join(path.dirname(__dirname),'uploads',req.customData.token.username)
+        console.log('pathname',pathname);
         cb(null,pathname)
         console.log(file);
         console.log(pathname);

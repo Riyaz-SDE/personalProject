@@ -7,7 +7,6 @@ import useFollow from "./useFollow";
 export const OthersProfile = () =>{
     const {id} = useParams()
     const [data,setData] = useState({})
-    const [follow] = useFollow(localStorage.getItem("userId"),id)
     useEffect(()=>{
         const fetch = async ()=>{
             try{
@@ -22,25 +21,39 @@ export const OthersProfile = () =>{
         fetch()
         return ()=> fetch
     },[id])
-   
-   if(data.username){return(
-        <>
-        {/* <div>{JSON.stringify(data)}</div>    */}
-        <img src={`http://127.0.0.1:5000/protected/uploads/${data.profile.path?data.username+'/'+data.profile.fileName:'DEFAULT.webp'}`}
-        style={{width:'100px',aspectRatio:'1/1',borderRadius:'50%'}}/>
-        <h1>Name : {data.username} </h1>
-        <table>
-            <tr>
-                <th>followers</th>
-                <th>following</th>
-            </tr>
-            <tr>
-                <td>{data.followers.length}</td>
-                <td>{data.followings.length}</td>
-            </tr>
-        </table>
-        <button onClick={follow}>
-            {data.followings.filter(e => e.userId === localStorage.getItem("userId")) ? 'un':''} Follow</button>
-        </>
-    )}return <>null</>
+    
+    const [follow,unfollow] = useFollow(localStorage.getItem("userId"),id)
+    const followAction = () => {
+        if(data?.followers.filter(e => e.userId === localStorage.getItem("userId"))[0]?.userId){
+            console.log('unfollow')
+            return unfollow()
+        }
+        console.log('follow')
+        return follow()
+    } 
+    console.log('other-user-data',data)
+   if(data.username){
+        return(
+            <>
+            <img src={`http://127.0.0.1:5000/protected/uploads/${data.profile.path?data.username+'/'+data.profile.fileName:'DEFAULT.webp'}`}
+            style={{width:'100px',aspectRatio:'1/1',borderRadius:'50%'}}/>
+            <h1>Name : {data.username} </h1>
+            <table>
+                <tr>
+                    <th>followers</th>
+                    <th>following</th>
+                </tr>
+                <tr>
+                    <td>{data.followers.length}</td>
+                    <td>{data.followings.length}</td>
+                </tr>
+            </table>
+                {data.followers[0]?.userId}
+            <button onClick={() => {followAction()}}>
+                {/* Now task is to find user followed or not */}
+                {data?.followers.filter(e => e.userId === localStorage.getItem("userId"))[0]?.userId ? 'un':''} Follow</button>
+            </>
+        )
+    }
+    return <>null</>
 }

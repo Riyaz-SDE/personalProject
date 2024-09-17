@@ -1,0 +1,61 @@
+.profile-wrapper{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: 
+    "cover cover"
+    "profile userName"
+    "profile userName"
+    ;
+}
+*{  box-sizing: border-box;margin: 0;}
+body{margin: 0;}
+.cover,
+.profile,
+.userName,
+.others{
+    /* border: 1px solid #000; */
+    width: 100%;
+    
+}
+.cover{
+    /* display: block; */
+    grid-area: cover;
+    padding: 10px 30px;
+  height: 200px;
+    /* width: 100vw; */
+    /* height: 100%; */
+    /* background-image: url('../css/intricity.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+.cover img{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+}
+.profile{
+    display: block;
+    grid-area: profile;
+    padding: 10px 30px ;
+    height: 150px;
+}
+.profile img{
+    border-radius: 50%;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+.userName{
+    display: block;
+    grid-area: userName;
+    /* align-items: center; */
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.others{
+    display: block;
+    grid-area: others;
+    height: fit-content;
+}
