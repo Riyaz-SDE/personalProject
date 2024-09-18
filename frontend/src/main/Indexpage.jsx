@@ -4,6 +4,7 @@ import Profile from "./profile/Profile"
 import Users from "./users/Users"
 import { OthersProfile } from "./othersProfile/OthersProfile"
 import ProfileCard from "./components/ProfileCard"
+import Follows from "./follows/Follows"
 
 
 const Indexpage =()=>{
@@ -15,6 +16,8 @@ const Indexpage =()=>{
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/users" element={<Users/>}/>
             <Route path="/users/:id" element={<OthersProfile/>}/>
+            <Route path="/followers/:id" element={<Follows/>}/>
+            <Route path="/followings/:id" element={<Follows/>}/>
             <Route path="/c" element={<ProfileCard/>}/>
         </Routes>
         </>

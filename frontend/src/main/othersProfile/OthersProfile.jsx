@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Img from "../Img";
 import useFollow from "./useFollow";
 
@@ -40,8 +40,8 @@ export const OthersProfile = () =>{
             <h1>Name : {data.username} </h1>
             <table>
                 <tr>
-                    <th>followers</th>
-                    <th>following</th>
+                    <th>followers <Link to={`/followers/${id}?followings=false`}>check</Link> </th>
+                    <th>following <Link  to={`/followings/${id}?followings=true`}>check</Link> </th>
                 </tr>
                 <tr>
                     <td>{data.followers.length}</td>
