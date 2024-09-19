@@ -96,7 +96,7 @@
     if(Object.keys(data).length){
         return(
             <>
-            
+            <h1>Profile</h1>
                 <Suspense fallback={<>''''''''''''</>} >
                     <Imgs src={`http://127.0.0.1:5000/protected/uploads/${
                     Object.keys(data).length && data.profile.path ? 
