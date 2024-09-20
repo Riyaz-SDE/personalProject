@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const post = require('./postSchema/postSchema')
 
 const profilePath= new mongoose.Schema({
     fileName: {
@@ -42,6 +43,10 @@ const userSchema = new mongoose.Schema({
         type:[follow],
         default:[]
     },
+    posts : {
+        type: [post],
+        default: []
+    }
 })
 
 const User = mongoose.model('User',userSchema)

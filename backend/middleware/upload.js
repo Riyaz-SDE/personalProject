@@ -8,11 +8,15 @@ function authMiddleware(req, res, next) {
     console.log('authmidleware executed')
     const token = req.headers.authorization.split(" ")[1]
     const verify = jwt.verify(token,"q1q1q1",async(err,decode)=>{
-        if(err) return
+        if(err) {
+            res.status(403).json({message: 'forbidden',err: err,token: token})
+            console.log('forbidden');
+            return
+        }
         // else{
             console.log(decode,token);
             const data = await User.findById(decode.userId)
-            res.json(data)
+            // res.json(data)
             req.customData = {token:data}
             console.log('=========================');
             console.log(data);

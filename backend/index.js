@@ -4,6 +4,7 @@ const cors = require('cors')
 const path = require('path')
 const connect = require('./dbconnect')
 const authentication = require('./middleware/authentication')
+const { authMiddleware } = require('./middleware/upload')
 
 
 app.use(cors())
@@ -30,11 +31,11 @@ app.use('/log',require('./Routes/general/login')) // for user login
 
 /**
  * @protected
- * token give a user information object from DB
- * and also has /protected/uploads/DEFAULT.webp
+ * 2 - token give a user information object from DB
+ * 1 - for has /protected/uploads/DEFAULT.webp
  */
 app.use('/protected/uploads',express.static(path.join(__dirname,'uploads'))) // routed protected by JWT 
-app.use('/protected',authentication,require('./Routes/general/protected')) // routed protected by JWT 
+app.use('/protected',authentication,require('./Routes/general/protected')) // route protected by JWT
 
 /**
  * file upload using multer
@@ -71,8 +72,15 @@ app.use('/follow',require('./Routes/connection@/follow'))
  * @POST
  * unfollow api
 */
-app.use('/unfollow',require('./Routes/connection@/unFollow'))
+app.use('/unfollow',require('./Routes/connection@/unFollow')) 
 
+
+/**
+ * add post
+ */
+app.use('/addPost',authMiddleware, require('./Routes/posts/addPost'))
+app.use('/deletePost',authMiddleware, require('./Routes/posts/deletePost'))
+app.use('/getPost', require('./Routes/posts/getPost'))
 app.listen('5000',(req,res)=>{
     console.log('server is running');
 })
