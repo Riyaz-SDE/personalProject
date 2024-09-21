@@ -6,12 +6,12 @@ router.post('/',async(req,res)=>{
     const {search} = req.body
     try{
         // const search = 'sa'
-    console.log(search);
-    const regexPattern = new RegExp(search, 'i');
+        console.log(search);
+        const regexPattern = new RegExp(search, 'i');
 
-    const data = await User.find({ username: { $regex : regexPattern } },{ username : 1 })
-    console.log(data);
-    res.json(data)
+        const data = await User.find({ username: { $regex : regexPattern } },{ username : 1 })
+        console.log(data);
+        res.json(data)
     }
     catch(err){
         res.json({error:err})
