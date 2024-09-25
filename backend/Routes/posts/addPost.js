@@ -1,9 +1,9 @@
-const { authMiddleware } = require('../../middleware/upload')
+// const { authMiddleware } = require('../../middleware/upload')
 const User = require('../../model/model')
 
 const route = require('express').Router()
 
-route.post('/', require('../../middleware/upload').uploads.single("PostPic"),
+route.post('/', require('../../middleware/postUpload').uploads.single("post"),
  async (req,res) => {
     try {
         const userData = req.customData

@@ -50,6 +50,15 @@ routes.post('/',async(req,res)=>{
             console.log('folder created')
         }
     })
+    let postPath =path.join(filepath,'posts')
+    fs.mkdir(postPath, (err) => {
+        if (err) {
+            console.log(err, 'error occured')
+        }
+        else {
+            console.log('posts folder created')
+        }
+    })
     // ===========================================
     // encrypt the password
     const hash = await bcryt.hash(password,10)

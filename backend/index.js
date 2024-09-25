@@ -78,7 +78,7 @@ app.use('/unfollow',require('./Routes/connection@/unFollow'))
 /**
  * add post
  */
-app.use('/addPost',authMiddleware, require('./Routes/posts/addPost'))
+app.use('/addPost',authentication, require('./Routes/posts/addPost'))
 app.use('/deletePost',authMiddleware, require('./Routes/posts/deletePost'))
 app.use('/getPost', require('./Routes/posts/getPost'))
 app.listen('5000',(req,res)=>{

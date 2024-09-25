@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
         // const pathname = path.join(__dirname,'uploads',file.object)
         console.log('folder destination creating')
         console.log(req.customData)
-        console.log(req.customData.token.usernname);
+        console.log(req.customData.token.username);
         const pathname = path.join(path.dirname(__dirname),'uploads',req.customData.token.username)
         console.log('pathname',pathname);
         cb(null,pathname)

@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense,  } from "react";
 import {  Link, useNavigate } from "react-router-dom";
 import useAuth from "./customHook/useAutoRedirect";
 import useFileUpload from "./customHook/useFileUpload";
@@ -8,7 +7,7 @@ const TOKEN_GET = `http://127.0.0.1:5000/protected`
 const token = localStorage.getItem("token")
 const FILE_POST = `http://127.0.0.1:5000/log/pic`
 const Imgs = React.lazy(()=> import('../Img'))
-let x =0
+let x = 0
 
 const Profile = ()=>{
     x++
