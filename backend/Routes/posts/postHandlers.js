@@ -42,4 +42,15 @@ const addPost = async (req,res) => {
     }
 }
 
-module.exports = {deletePost,addPost}
+const getPost = async (req,res) => {
+    try {
+        const {username} = req.params
+
+        const posts = User.findOne({
+            username : username,
+        },{posts : 1})
+    } catch (error) {
+        res.status(500).json({messgae : 'error'})
+    }
+}
+module.exports = {deletePost,addPost,getPost}

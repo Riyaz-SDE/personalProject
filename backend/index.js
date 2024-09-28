@@ -80,9 +80,8 @@ app.use('/unfollow',require('./Routes/connection@/unFollow'))
  */
 // app.use('/addPost',authentication, require('./Routes/posts/addPost'))
 // app.use('/deletePost',authentication, require('./Routes/posts/deletePost'))
-app.use('/addPost',authentication,require('./Routes/posts/postRoute'))
-
-app.use('/like',authentication,require('./Routes/posts/likes/likesRoute'))
+app.use('/addPost',require('./Routes/posts/postRoute'))
+app.use('/like',require('./Routes/posts/likes/likesRoute')) 
 app.use('/comments',authentication,require('./Routes/posts/comments/commentsRoute'))
 app.use('/getPost', require('./Routes/posts/getPost'))
 app.listen('5000',(req,res)=>{
