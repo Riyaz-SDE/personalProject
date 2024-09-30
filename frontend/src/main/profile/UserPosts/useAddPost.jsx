@@ -16,7 +16,7 @@ function useAddPost(token,urls) {
         if(field.type === 'file'){
           postBinFile.append("post",field.files[0])
         }else if(field.type === 'textarea'){
-          postBinFile.append("post",field.value)
+          postBinFile.append("content",field.value)
         }
 
       }

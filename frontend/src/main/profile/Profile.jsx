@@ -62,6 +62,7 @@ if(data !== undefined){
                 <button onClick={uploadFile}>test</button>
                 <Link to={'/users'}>Users</Link>
                 <Link to={'/profile/addPost'}>addPost</Link>
+                <Link to={`/profile/posts/${data.username}`}>post</Link>
             </div>
         </>
     )    

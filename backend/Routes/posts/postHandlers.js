@@ -24,6 +24,11 @@ const addPost = async (req,res) => {
         console.log(`file object`,req.file,req.body.content);
         const postFilename = req.file.filename
         const postContent = req.body.content
+        console.log('creadentials',postContent,postFilename);
+        if(!postFilename || !postContent) {
+            res.status(400).json({message : 'data missing'})
+            return
+        }
         // const isUserExist = await User.findOne({username : req.username})
         const addPostDB = await User.updateOne(
             { username : userData.username },
@@ -45,11 +50,12 @@ const addPost = async (req,res) => {
 const getPost = async (req,res) => {
     try {
         const {username} = req.params
-
-        const posts = User.findOne({
-            username : username,
-        },{posts : 1})
+        console.log(username);
+        const posts = await User.findOne({username : username,},{posts : 1})
+        console.log(posts);
+        res.status(200).json({message : 'success', data : posts})
     } catch (error) {
+        console.log(error);
         res.status(500).json({messgae : 'error'})
     }
 }

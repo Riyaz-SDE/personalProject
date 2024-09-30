@@ -52,6 +52,8 @@ export const OthersProfile = () =>{
             <button onClick={() => {followAction()}}>
                 {/* Now task is to find user followed or not */}
                 {data?.followers.filter(e => e.userId === localStorage.getItem("userId"))[0]?.userId ? 'un':''} Follow</button>
+
+            <Link to={`/posts/${data.username}`}>Posts</Link>
             </>
         )
     }
