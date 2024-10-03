@@ -20,11 +20,11 @@ router.post('/',
         {"$set":{"profile.path" : req.file.path,"profile.fileName":req.file.filename}})
 
         console.log(fileUpload);
-        if(fileUpload.modifiedCount===0){
+        if(fileUpload.modifiedCount === 0){
             res.status(404).json({error:'not changed'})
             return 
         }
-        // res.status(200).json({message:'corect'})
+        res.status(200).json({message:'corect'})
             }   
         catch(err){
             console.log(err);

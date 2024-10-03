@@ -8,7 +8,7 @@ const authentication = require('../../middleware/authentication')
 // app.use('/uploads',express.static(path.join(path.dirname(path.dirname(__dirname)),'uploads')),()=>{
 //     console.log(path.join(path.dirname(path.dirname(__dirname)),'uploads'));
 // })
-app.use('/',authentication)
+// app.use('/',authentication)
 app.get('/', async(req,res)=>{
     console.log('pop');
     // console.log( req.headers.authorization.split(" ")[1]);
